@@ -5,12 +5,11 @@ namespace DDP.Decorator.Repository;
 public class CachedAuthorRepository : IAuthorRepository
 {
     private readonly IAuthorRepository _authorRepository;
-    private readonly ConcurrentDictionary<Guid, Author> _dict;
+    private static readonly ConcurrentDictionary<Guid, Author> _dict = new();
 
     public CachedAuthorRepository(IAuthorRepository authorRepository)
     {
         _authorRepository = authorRepository;
-        _dict = new ConcurrentDictionary<Guid, Author>();
 
     }
     public Author GetById(Guid id)

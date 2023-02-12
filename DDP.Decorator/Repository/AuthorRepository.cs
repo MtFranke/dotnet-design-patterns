@@ -12,7 +12,7 @@ public class AuthorRepository: IAuthorRepository
     private IList<Author> _authors;
     public AuthorRepository()
     {
-        _authors = new[] { new Author(Guid.NewGuid()) };
+        _authors = new[] { new Author(Guid.Parse("D0A58DC8-427A-4F09-A1B4-DD6520FC40BB")) };
     }
 
     public Author GetById(Guid id)

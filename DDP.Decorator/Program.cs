@@ -2,7 +2,8 @@ using DDP.Decorator.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<AuthorRepository>();
-builder.Services.AddScoped<IAuthorRepository, CachedAuthorRepository>();
+builder.Services.AddScoped<IAuthorRepository>(provider => 
+    new CachedAuthorRepository(provider.GetRequiredService<AuthorRepository>()));
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
