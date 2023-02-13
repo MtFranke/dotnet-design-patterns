@@ -1,9 +1,16 @@
 using DDP.Decorator.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<AuthorRepository>();
-builder.Services.AddScoped<IAuthorRepository>(provider => 
-    new CachedAuthorRepository(provider.GetRequiredService<AuthorRepository>()));
+
+// Simple decorating of IAuthorRepository
+// builder.Services.AddScoped<AuthorRepository>();
+// builder.Services.AddScoped<IAuthorRepository>(provider => 
+//     new CachedAuthorRepository(provider.GetRequiredService<AuthorRepository>()));
+
+// Usage of Scrutor lib
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.Decorate<IAuthorRepository, CachedAuthorRepository>();
+
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
