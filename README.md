@@ -1,7 +1,6 @@
 # dotnet-design-patterns
 practical usage of design pattern in ASP.NET
 
-## Structural
-### Decorator (DDP.Decorator)
-
-## CQRS (DDP.CQRS) 
+- Decorator (DDP.Decorator)
+- [CQRS](DDP.CQRS/README.md)
+  
