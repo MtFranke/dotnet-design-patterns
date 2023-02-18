@@ -6,16 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMediator();
 var app = builder.Build();
 
-app.MapGet("/example",  async (IMediator mediator) =>
-{
-    var ping = new Ping(Guid.NewGuid());
-    await mediator.Send(ping);
-});
-
 app.MapPost("/user",  async (UserRegisterCommand command, IMediator mediator) =>
 {
     await mediator.Send(command);
     return Results.Ok();
+});
+
+app.MapGet("/user",  async (IMediator mediator) =>
+{
+    var response = await mediator.Send(new GetUsersQuery());
+    return Results.Ok(response);
 });
 
 app.Run();
