@@ -1,4 +1,4 @@
-using DDP.CQRS.Model;
+using DDP.CQRS.Domain;
 using Mediator;
 
 namespace DDP.CQRS.Commands;

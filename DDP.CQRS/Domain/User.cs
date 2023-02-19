@@ -1,4 +1,4 @@
-namespace DDP.CQRS.Model;
+namespace DDP.CQRS.Domain;
 
 public class User
 {
