@@ -5,8 +5,15 @@ namespace DDP.CQRS.Queries;
 
 public class GetUserQueryHandlers : IQueryHandler<GetUsersQuery, IList<User>>
 {
-    public ValueTask<IList<User>> Handle(GetUsersQuery query, CancellationToken cancellationToken)
+    private readonly IUserRepository _userRepository;
+
+    public GetUserQueryHandlers(IUserRepository userRepository)
     {
-        throw new NotImplementedException();
+        _userRepository = userRepository;
+    }
+    public async ValueTask<IList<User>> Handle(GetUsersQuery query, CancellationToken cancellationToken)
+    {
+        var response = await _userRepository.Get();
+        return response;
     }
 }

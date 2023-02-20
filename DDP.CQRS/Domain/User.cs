@@ -1,7 +1,15 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace DDP.CQRS.Domain;
 
 public class User
 {
+    public User()
+    {
+    }
+
+    [Key]
+    public Guid Id { get; set; }
     public string FirstName { get; }
     public string LastName { get; }
 
